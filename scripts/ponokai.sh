@@ -349,11 +349,11 @@ main() {
 
     if $show_powerline; then
       if $show_empty_plugins; then
-        tmux set-option -ga status-right " #[fg=${!colors[0]},bg=${!plugin_background_color[0]},nobold,nounderscore,noitalics]${right_seperator}#[fg=${!colors[1]},bg=${!colors[0]}] $script $right_edge_icon"
+        tmux set-option -ga status-right " #[fg=${!colors[0]},bg=${plugin_background_color},nobold,nounderscore,noitalics]${right_seperator}#[fg=${!colors[1]},bg=${!colors[0]}] $script $right_edge_icon"
       else
         tmux set-option -ga status-right "#{?#{==:$script,},,#[fg=${!colors[0]},nobold,nounderscore,noitalics] ${right_seperator}#[fg=${!colors[1]},bg=${!colors[0]}] $script $right_edge_icon}"
-        previous_plugin_background_color=${!colors[0]}
       fi
+      previous_plugin_background_color=${!colors[0]}
     else
       if $show_empty_plugins; then
         tmux set-option -ga status-right "#[fg=${!colors[1]},bg=${!colors[0]}] $script "
@@ -367,7 +367,7 @@ main() {
   # Window option
   IFS=' ' read -r -a window_status_colors <<< $(get_tmux_option "@ponokai-window-status-colors" "purple bg1")
   if $show_powerline; then
-    tmux set-window-option -g window-status-current-format "#[fg=${!window_seperator_colors[1]},bg=${!window_seperator_colors[0]}]${!window_seperator}#[fg=${!window_status_colors[1]},bg=${!window_status_colors[0]}] #I #W${current_flags} #[fg=${!powerline_colors[1]},bg=${!powerline_colors[0]}]${left_seperator}"
+    tmux set-window-option -g window-status-current-format "#[fg=${!window_seperator_colors[1]},bg=${!window_seperator_colors[0]}]${window_seperator}#[fg=${!window_status_colors[1]},bg=${!window_status_colors[0]}] #I #W${current_flags} #[fg=${!powerline_colors[1]},bg=${!powerline_colors[0]}]${left_seperator}"
   else
     tmux set-window-option -g window-status-current-format "#[fg=${!window_status_colors[1]},bg=${!window_status_colors[0]}] #I #W${current_flags} "
   fi
