@@ -332,6 +332,7 @@ main() {
     elif [ $plugin = "sys-temp" ]; then
       IFS=' ' read -r -a colors <<< $(get_tmux_option "@ponokai-sys-temp-colors" "green black")
       script="#($current_dir/sys_temp.sh)"
+      
     else
       continue
     fi
