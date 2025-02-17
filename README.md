@@ -1,4 +1,4 @@
-# Dracula for [tmux](https://github.com/tmux/tmux/wiki)
+# Ponokai for [tmux](https://github.com/tmux/tmux/wiki)
 
 > A dark theme for [tmux](https://github.com/tmux/tmux/wiki)
 
@@ -15,6 +15,7 @@ Configuration and options can be found [in the docs](/docs/CONFIG.md).
 ## Color Theming
 
 In depth configuration of Colors and alternative themes can be found [in the docs](/docs/color_theming/README.md)
+Based on the colors from [ponoki for vim](https://github.com/shawilly/ponokai)
 
 ## Features
 
