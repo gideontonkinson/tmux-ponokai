@@ -160,7 +160,7 @@ main()
     no_bat_label=""
   fi
 
-  show_bat_label=$(get_tmux_option "@ponokai-show-battery-status" true
+  show_bat_label=$(get_tmux_option "@ponokai-show-battery-status" true)
   if $show_bat_label; then
     bat_stat=$(battery_status)
   else

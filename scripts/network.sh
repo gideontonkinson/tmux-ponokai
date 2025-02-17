@@ -7,7 +7,7 @@ source $current_dir/utils.sh
 
 # set your own hosts so that a wifi is recognised even without internet access
 HOSTS=$(get_tmux_option "@ponokai-network-hosts" "google.com github.com example.com")
-wifi_label=$(get_tmux_option "@ponokai-network-wifi-label" "󱍢")
+wifi_label=$(get_tmux_option "@ponokai-network-wifi-label" "")
 ethernet_label=$(get_tmux_option "@ponokai-network-ethernet-label" "󰈀 Eth")
 
 get_ssid()

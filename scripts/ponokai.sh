@@ -178,6 +178,7 @@ main() {
     else
       tmux set-option -g status-left "#[bg=${!powerline_colors[0]},fg=${!powerline_colors[1]}]#[bg=${!powerline_colors[1]},fg=${!powerline_colors[0]}]#{?client_prefix,#[bg=${!client_colors[1]}],} ${left_icon} #[fg=${!powerline_colors[1]},bg=${!powerline_colors[0]}]#{?client_prefix,#[fg=${!client_colors[1]}],}${left_seperator}"
     fi
+    previous_plugin_background_color=${!powerline_colors[0]}
   else
     tmux set-option -g status-left "#[bg=${!powerline_colors[0]},fg=${!powerline_colors[1]}]#{?client_prefix,#[bg=${!client_colors[1]}],} ${left_icon}"
   fi
@@ -186,7 +187,7 @@ main() {
   tmux set-option -g status-right ""
 
   for plugin in "${plugins[@]}"; do
-    echo $plugin
+
     if case $plugin in custom:*) true;; *) false;; esac; then
       script=${plugin#"custom:"}
       if [[ -x "${current_dir}/${script}" ]]; then
@@ -342,13 +343,16 @@ main() {
     # edge styling
     if $show_edge_icons; then
       right_edge_icon="#[bg=${!powerline_colors[0]},fg=${!colors[0]}]${show_left_seperator}"
+      plugin_background_color=${!powerline_colors[0]}
     fi
+      else plugin_background_color=${previous_plugin_background_color[0]}
 
     if $show_powerline; then
       if $show_empty_plugins; then
-        tmux set-option -ga status-right " #[fg=${!colors[0]},bg=${!powerline_colors[0]},nobold,nounderscore,noitalics]${right_seperator}#[fg=${!colors[1]},bg=${!colors[0]}] $script $right_edge_icon"
+        tmux set-option -ga status-right " #[fg=${!colors[0]},bg=${!plugin_background_color[0]},nobold,nounderscore,noitalics]${right_seperator}#[fg=${!colors[1]},bg=${!colors[0]}] $script $right_edge_icon"
       else
         tmux set-option -ga status-right "#{?#{==:$script,},,#[fg=${!colors[0]},nobold,nounderscore,noitalics] ${right_seperator}#[fg=${!colors[1]},bg=${!colors[0]}] $script $right_edge_icon}"
+        previous_plugin_background_color=${!colors[0]}
       fi
     else
       if $show_empty_plugins; then

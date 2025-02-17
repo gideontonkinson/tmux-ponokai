@@ -52,7 +52,7 @@ main() {
   # storing the refresh rate in the variable RATE, default is 5
   RATE=$(get_tmux_option "@ponokai-refresh-rate" 5)
   cpu_load=$(get_tmux_option "@ponokai-cpu-display-load" false)
-  cpu_label=$(get_tmux_option "@ponokai-cpu-usage-label" "󱍢")
+  cpu_label=$(get_tmux_option "@ponokai-cpu-usage-label" "")
   if [ "$cpu_load" = true ]; then
     echo "$cpu_label $(get_load)"
   else
