@@ -197,108 +197,108 @@ main() {
         script="${script} not found!"
       fi
 
-    elif [ $plugin="cwd" ]; then
+    elif [ $plugin = "cwd" ]; then
       IFS=' ' read -r -a colors  <<< $(get_tmux_option "@ponokai-cwd-colors" "grey black")
       tmux set-option -g status-right-length 250
       script="#($current_dir/cwd.sh)"
 
-    elif [ $plugin="fossil" ]; then
+    elif [ $plugin = "fossil" ]; then
       IFS=' ' read -r -a colors  <<< $(get_tmux_option "@ponokai-fossil-colors" "green black")
       tmux set-option -g status-right-length 250
       script="#($current_dir/fossil.sh)"
 
-    elif [ $plugin="git" ]; then
+    elif [ $plugin = "git" ]; then
       IFS=' ' read -r -a colors  <<< $(get_tmux_option "@ponokai-git-colors" "green black")
       tmux set-option -g status-right-length 250
       script="#($current_dir/git.sh)"
 
-    elif [ $plugin="hg" ]; then
+    elif [ $plugin = "hg" ]; then
       IFS=' ' read -r -a colors  <<< $(get_tmux_option "@ponokai-hg-colors" "green black")
       tmux set-option -g status-right-length 250
       script="#($current_dir/hg.sh)"
 
-    elif [ $plugin="battery" ]; then
+    elif [ $plugin = "battery" ]; then
       IFS=' ' read -r -a colors <<< $(get_tmux_option "@ponokai-battery-colors" "red black")
       script="#($current_dir/battery.sh)"
 
-    elif [ $plugin="gpu-usage" ]; then
+    elif [ $plugin = "gpu-usage" ]; then
       IFS=' ' read -r -a colors <<< $(get_tmux_option "@ponokai-gpu-usage-colors" "red black")
       script="#($current_dir/gpu_usage.sh)"
 
-    elif [ $plugin="gpu-ram-usage" ]; then
+    elif [ $plugin = "gpu-ram-usage" ]; then
       IFS=' ' read -r -a colors <<< $(get_tmux_option "@ponokai-gpu-ram-usage-colors" "blue black")
       script="#($current_dir/gpu_ram_info.sh)"
 
-    elif [ $plugin="gpu-power-draw" ]; then
+    elif [ $plugin = "gpu-power-draw" ]; then
       IFS=' ' read -r -a colors <<< $(get_tmux_option "@ponokai-gpu-power-draw-colors" "green black")
       script="#($current_dir/gpu_power.sh)"
 
-    elif [ $plugin="cpu-usage" ]; then
+    elif [ $plugin = "cpu-usage" ]; then
       IFS=' ' read -r -a colors <<< $(get_tmux_option "@ponokai-cpu-usage-colors" "orange black")
       script="#($current_dir/cpu_info.sh)"
 
-    elif [ $plugin="ram-usage" ]; then
+    elif [ $plugin = "ram-usage" ]; then
       IFS=' ' read -r -a colors <<< $(get_tmux_option "@ponokai-ram-usage-colors" "blue black")
       script="#($current_dir/ram_info.sh)"
 
-    elif [ $plugin="tmux-ram-usage" ]; then
+    elif [ $plugin = "tmux-ram-usage" ]; then
       IFS=' ' read -r -a colors <<< $(get_tmux_option "@ponokai-tmux-ram-usage-colors" "blue black")
       script="#($current_dir/tmux_ram_info.sh)"
 
-    elif [ $plugin="network" ]; then
+    elif [ $plugin = "network" ]; then
       IFS=' ' read -r -a colors <<< $(get_tmux_option "@ponokai-network-colors" "green black")
       script="#($current_dir/network.sh)"
 
-    elif [ $plugin="network-bandwidth" ]; then
+    elif [ $plugin = "network-bandwidth" ]; then
       IFS=' ' read -r -a colors <<< $(get_tmux_option "@ponokai-network-bandwidth-colors" "blue black")
       tmux set-option -g status-right-length 250
       script="#($current_dir/network_bandwidth.sh)"
 
-    elif [ $plugin="network-ping" ]; then
+    elif [ $plugin = "network-ping" ]; then
       IFS=' ' read -r -a colors <<<$(get_tmux_option "@ponokai-network-ping-colors" "blue black")
       script="#($current_dir/network_ping.sh)"
 
-    elif [ $plugin="network-vpn" ]; then
+    elif [ $plugin = "network-vpn" ]; then
       IFS=' ' read -r -a colors <<<$(get_tmux_option "@ponokai-network-vpn-colors" "blue black")
       script="#($current_dir/network_vpn.sh)"
 
-    elif [ $plugin="attached-clients" ]; then
+    elif [ $plugin = "attached-clients" ]; then
       IFS=' ' read -r -a colors <<<$(get_tmux_option "@ponokai-attached-clients-colors" "blue black")
       script="#($current_dir/attached_clients.sh)"
 
-    elif [ $plugin="mpc" ]; then
+    elif [ $plugin = "mpc" ]; then
       IFS=' ' read -r -a colors <<<$(get_tmux_option "@ponokai-mpc-colors" "green black")
       script="#($current_dir/mpc.sh)"
 
-    elif [ $plugin="spotify-tui" ]; then
+    elif [ $plugin = "spotify-tui" ]; then
       IFS=' ' read -r -a colors <<<$(get_tmux_option "@ponokai-spotify-tui-colors" "green black")
       script="#($current_dir/spotify-tui.sh)"
 
-    elif [ $plugin="krbtgt" ]; then
+    elif [ $plugin = "krbtgt" ]; then
       IFS=' ' read -r -a colors <<<$(get_tmux_option "@ponokai-krbtgt-colors" "blue black")
       script="#($current_dir/krbtgt.sh $krbtgt_principal $show_krbtgt_label)"
 
-    elif [ $plugin="playerctl" ]; then
+    elif [ $plugin = "playerctl" ]; then
       IFS=' ' read -r -a colors <<<$(get_tmux_option "@ponokai-playerctl-colors" "green black")
       script="#($current_dir/playerctl.sh)"
 
-    elif [ $plugin="kubernetes-context" ]; then
+    elif [ $plugin = "kubernetes-context" ]; then
       IFS=' ' read -r -a colors <<<$(get_tmux_option "@ponokai-kubernetes-context-colors" "blue black")
       script="#($current_dir/kubernetes_context.sh $eks_hide_arn $eks_extract_account $hide_kubernetes_user $show_only_kubernetes_context $show_kubernetes_context_label)"
 
-    elif [ $plugin="terraform" ]; then
+    elif [ $plugin = "terraform" ]; then
       IFS=' ' read -r -a colors <<<$(get_tmux_option "@ponokai-terraform-colors" "purple black")
       script="#($current_dir/terraform.sh $terraform_label)"
 
-    elif [ $plugin="continuum" ]; then
+    elif [ $plugin = "continuum" ]; then
       IFS=' ' read -r -a colors <<<$(get_tmux_option "@ponokai-continuum-colors" "blue black")
       script="#($current_dir/continuum.sh)"
 
-    elif [ $plugin="weather" ]; then
+    elif [ $plugin = "weather" ]; then
       IFS=' ' read -r -a colors <<< $(get_tmux_option "@ponokai-weather-colors" "blue black")
       script="#($current_dir/weather_wrapper.sh $show_fahrenheit $show_location '$fixed_location')"
 
-    elif [ $plugin="time" ]; then
+    elif [ $plugin = "time" ]; then
       IFS=' ' read -r -a colors <<< $(get_tmux_option "@ponokai-time-colors" "purple black")
       if [ -n "$time_format" ]; then
         script=${time_format}
@@ -313,23 +313,23 @@ main() {
           script="%a %m/%d %I:%M %p ${timezone} "
         fi
       fi
-    elif [ $plugin="synchronize-panes" ]; then
+    elif [ $plugin = "synchronize-panes" ]; then
       IFS=' ' read -r -a colors <<< $(get_tmux_option "@ponokai-synchronize-panes-colors" "blue black")
       script="#($current_dir/synchronize_panes.sh $show_synchronize_panes_label)"
 
-    elif [ $plugin="libreview" ]; then
+    elif [ $plugin = "libreview" ]; then
       IFS=' ' read -r -a colors <<< $(get_tmux_option "@ponokai-libre-colors" "fg0 bg2")
       script="#($current_dir/libre.sh $show_libreview)"
 
-    elif [ $plugin="ssh-session" ]; then
+    elif [ $plugin = "ssh-session" ]; then
       IFS=' ' read -r -a colors <<< $(get_tmux_option "@ponokai-ssh-session-colors" "green black")
       script="#($current_dir/ssh_session.sh $show_ssh_session_port)"
 
-    elif [ $plugin="network-public-ip" ]; then
+    elif [ $plugin = "network-public-ip" ]; then
       IFS=' ' read -r -a colors <<<$(get_tmux_option "@ponokai-network-public-ip-colors" "blue black")
       script="#($current_dir/network-public-ip.sh)"
 
-    elif [ $plugin="sys-temp" ]; then
+    elif [ $plugin = "sys-temp" ]; then
       IFS=' ' read -r -a colors <<< $(get_tmux_option "@ponokai-sys-temp-colors" "green black")
       script="#($current_dir/sys_temp.sh)"
     else
@@ -359,7 +359,7 @@ main() {
   done
 
   # Window option
-  IFS=' ' read -r -a window_status_colors <<< $(get_tmux_option "@ponokai-window-status-colors" "bg1 blue")
+  IFS=' ' read -r -a window_status_colors <<< $(get_tmux_option "@ponokai-window-status-colors" "purple bg1")
   if $show_powerline; then
     tmux set-window-option -g window-status-current-format "#[fg=${!window_seperator_colors[1]},bg=${!window_seperator_colors[0]}]${!window_seperator}#[fg=${!window_status_colors[1]},bg=${!window_status_colors[0]}] #I #W${current_flags} #[fg=${!powerline_colors[1]},bg=${!powerline_colors[0]}]${left_seperator}"
   else
