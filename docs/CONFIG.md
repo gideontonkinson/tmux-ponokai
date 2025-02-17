@@ -99,10 +99,10 @@ Switch powerline symbols
 
 ```bash
 # for left
-set -g @ponokai-show-left-seperator 
+set -g @ponokai-show-left-separator 
 
 # for right symbol (can set any symbol you like as separator)
-set -g @ponokai-show-right-seperator 
+set -g @ponokai-show-right-separator 
 ```
 
 Make the powerline background transparent
