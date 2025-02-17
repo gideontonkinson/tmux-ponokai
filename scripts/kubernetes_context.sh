@@ -18,15 +18,15 @@ current_namespace=$(kubectl config view --minify --output 'jsonpath={.contexts[?
 
 current_account_id=""
 if [[ "$current_cluster" =~ ^arn:(aws|aws-[a-z\-]*-gov):eks:[a-z0-9\-]*:[0-9]*:cluster/[a-z0-9\-]*$ ]]; then
-    if [ "$extract_account"="true" ]; then
+    if [ "$extract_account" = "true" ]; then
         current_account_id=$(echo "$current_cluster" | cut -d':' -f5)
     fi
-    if [ "$hide_arn_from_cluster"="true" ]; then
+    if [ "$hide_arn_from_cluster" = "true" ]; then
         current_cluster=${current_cluster##*/}
     fi
 fi
 
-if [ "$hide_user"="true" ]; then
+if [ "$hide_user" = "true" ]; then
     current_user=""
 fi
 
@@ -36,7 +36,7 @@ main()
   RATE=$(get_tmux_option "@ponokai-refresh-rate" 5)
   OUTPUT_STRING=""
 
-  if [ "$just_current_context"="true" ]
+  if [ "$just_current_context" = "true" ]
   then
     echo "$current_context"
   else
@@ -68,12 +68,12 @@ getFullMessage()
     OUTPUT_STRING="${OUTPUT_STRING}:${current_namespace}"
   fi
 
-  if [ "$OUTPUT_STRING"="" ]
+  if [ "$OUTPUT_STRING" = "" ]
   then
     OUTPUT_STRING="kubeconfig not valid"
   fi
 
-  if [ "$label"="" ]
+  if [ "$label" = "" ]
   then
     echo "${OUTPUT_STRING}"
   else
