@@ -186,7 +186,6 @@ main() {
   tmux set-option -g status-right ""
 
   for plugin in "${plugins[@]}"; do
-
     if case $plugin in custom:*) true;; *) false;; esac; then
       script=${plugin#"custom:"}
       if [[ -x "${current_dir}/${script}" ]]; then
@@ -329,6 +328,7 @@ main() {
     elif [ $plugin="network-public-ip" ]; then
       IFS=' ' read -r -a colors <<<$(get_tmux_option "@ponokai-network-public-ip-colors" "blue black")
       script="#($current_dir/network-public-ip.sh)"
+
     elif [ $plugin="sys-temp" ]; then
       IFS=' ' read -r -a colors <<< $(get_tmux_option "@ponokai-sys-temp-colors" "green black")
       script="#($current_dir/sys_temp.sh)"
@@ -359,7 +359,7 @@ main() {
   done
 
   # Window option
-  IFS=' ' read -r -a window_status_colors <<< $(get_tmux_option "@ponokai-window-status-colors" "bg1, purple")
+  IFS=' ' read -r -a window_status_colors <<< $(get_tmux_option "@ponokai-window-status-colors" "bg1 blue")
   if $show_powerline; then
     tmux set-window-option -g window-status-current-format "#[fg=${!window_seperator_colors[1]},bg=${!window_seperator_colors[0]}]${!window_seperator}#[fg=${!window_status_colors[1]},bg=${!window_status_colors[0]}] #I #W${current_flags} #[fg=${!powerline_colors[1]},bg=${!powerline_colors[0]}]${left_seperator}"
   else
