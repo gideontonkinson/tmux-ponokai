@@ -164,7 +164,7 @@ main() {
 
   # message styling
   IFS=' ' read -r -a message_colors <<< $(get_tmux_option "@ponokai-message-colors" "bg2 fg0")
-  tmux set-option -g message-style "bg=${!message_colors[0]},fg=${!message_fg_colors[1]}"
+  tmux set-option -g message-style "bg=${!message_colors[0]},fg=${!message_colors[1]}"
 
   # status bar
   IFS=' ' read -r -a flag_colors <<< $(get_tmux_option "@ponokai-flag-colors" "black purple")
