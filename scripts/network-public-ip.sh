@@ -10,7 +10,7 @@ main() {
   IP_SERVER="ifconfig.me"
   ip=$(curl -s "$IP_SERVER")
 
-  IP_LABEL=$(get_tmux_option "@dracula-network-public-ip-label" "")
+  IP_LABEL=$(get_tmux_option "@ponokai-network-public-ip-label" "")
   echo "$IP_LABEL $ip"
 }
 

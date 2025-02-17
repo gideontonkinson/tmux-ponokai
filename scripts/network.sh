@@ -6,9 +6,9 @@ current_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $current_dir/utils.sh
 
 # set your own hosts so that a wifi is recognised even without internet access
-HOSTS=$(get_tmux_option "@dracula-network-hosts" "google.com github.com example.com")
-wifi_label=$(get_tmux_option "@dracula-network-wifi-label" "")
-ethernet_label=$(get_tmux_option "@dracula-network-ethernet-label" "Ethernet")
+HOSTS=$(get_tmux_option "@ponokai-network-hosts" "google.com github.com example.com")
+wifi_label=$(get_tmux_option "@ponokai-network-wifi-label" "󱍢")
+ethernet_label=$(get_tmux_option "@ponokai-network-ethernet-label" "󰈀 Eth")
 
 get_ssid()
 {
@@ -48,7 +48,7 @@ get_ssid()
 
 main()
 {
-  network="$(get_tmux_option "@dracula-network-offline-label" "Offline")"
+  network="$(get_tmux_option "@ponokai-network-offline-label" "󱍢 Offline")"
   for host in $HOSTS; do
     if ping -q -c 1 -W 1 "$host" &>/dev/null; then
       network="$(get_ssid)"

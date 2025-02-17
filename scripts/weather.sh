@@ -32,7 +32,7 @@ function fetch_weather_information() {
     _unit="m"
   fi
 
-  # If the user provies a "fixed location", `@dracula-fixed-location`, that the
+  # If the user provies a "fixed location", `@ponokai-fixed-location`, that the
   # API does not recognize, the API may suggest a users actual geoip GPS
   # location in the response body. This can lead to user PI leak.
   # Drop response body when status code >= 400 and return nonzero by passing the

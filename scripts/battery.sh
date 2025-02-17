@@ -150,17 +150,17 @@ battery_status()
 
 main()
 {
-  bat_label=$(get_tmux_option "@dracula-battery-label" "♥")
+  bat_label=$(get_tmux_option "@ponokai-battery-label" false)
   if [ "$bat_label" == false ]; then
     bat_label=""
   fi
 
-  no_bat_label=$(get_tmux_option "@dracula-no-battery-label" "AC")
+  no_bat_label=$(get_tmux_option "@ponokai-no-battery-label" "AC")
   if [ "$no_bat_label" == false ]; then
     no_bat_label=""
   fi
 
-  show_bat_label=$(get_tmux_option "@dracula-show-battery-status" false)
+  show_bat_label=$(get_tmux_option "@ponokai-show-battery-status" true
   if $show_bat_label; then
     bat_stat=$(battery_status)
   else

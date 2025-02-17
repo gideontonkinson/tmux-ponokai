@@ -24,13 +24,13 @@ function slice_loop() {
 
 main() {
   # storing the refresh rate in the variable RATE, default is 5
-  RATE=$(get_tmux_option "@dracula-refresh-rate" 5)
+  RATE=$(get_tmux_option "@ponokai-refresh-rate" 5)
 
   if ! command -v playerctl &>/dev/null; then
     exit 1
   fi
 
-  FORMAT=$(get_tmux_option "@dracula-playerctl-format" "Now playing: {{ artist }} - {{ album }} - {{ title }}")
+  FORMAT=$(get_tmux_option "@ponokai-playerctl-format" "Now playing: {{ artist }} - {{ album }} - {{ title }}")
   playerctl_playback=$(playerctl metadata --format "${FORMAT}")
   playerctl_playback="${playerctl_playback} "
 

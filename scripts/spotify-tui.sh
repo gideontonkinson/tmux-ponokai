@@ -8,7 +8,7 @@ source $current_dir/utils.sh
 main()
 {
   # storing the refresh rate in the variable RATE, default is 5
-  RATE=$(get_tmux_option "@dracula-refresh-rate" 5)
+  RATE=$(get_tmux_option "@ponokai-refresh-rate" 5)
 
   if ! command -v spt &> /dev/null
   then
@@ -21,9 +21,9 @@ main()
     exit 0
   fi
 
-  FORMAT=$(get_tmux_option "@dracula-spotify-tui-format" "%f %s %t - %a")
+  FORMAT=$(get_tmux_option "@ponokai-spotify-tui-format" "%f %s %t - %a")
   spotify_playback=$(spt playback -f "${FORMAT}")
-  max_len=$(get_tmux_option "@dracula-spotify-tui-max-len" 0)
+  max_len=$(get_tmux_option "@ponokai-spotify-tui-max-len" 0)
   if [[ $max_len -ne 0 ]] ; then
     echo ${spotify_playback} | head -c $max_len
   else

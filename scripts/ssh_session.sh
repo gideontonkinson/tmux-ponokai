@@ -114,7 +114,7 @@ main() {
   user=$(get_info whoami)
 
   # Only show port info if ssh session connected (no localhost) and option enabled
-  if $(get_tmux_option "@dracula-show-ssh-only-when-connected" false) && ! $(ssh_connected); then
+  if $(get_tmux_option "@ponokai-show-ssh-only-when-connected" false) && ! $(ssh_connected); then
     echo ""
   elif $(ssh_connected) && [ "$show_ssh_session_port" == "true" ] ; then
     port=$(get_info port)

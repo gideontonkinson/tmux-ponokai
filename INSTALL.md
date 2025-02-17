@@ -4,7 +4,7 @@
 
 If you are a tpm user, you can install the theme and keep up to date by adding the following to your .tmux.conf file:
 
-	set -g @plugin 'dracula/tmux'
+	set -g @plugin 'ponokai/tmux'
 
 Add any configuration options below this line in your tmux config.
 
@@ -21,11 +21,11 @@ programs.tmux = {
 		sensible
 		yank
 		{
-			plugin = dracula;
+			plugin = ponokai;
 			extraConfig = ''
-				set -g @dracula-show-battery false
-				set -g @dracula-show-powerline true
-				set -g @dracula-refresh-rate 10
+				set -g @ponokai-show-battery false
+				set -g @ponokai-show-powerline true
+				set -g @ponokai-refresh-rate 10
 			'';
 		}
 	];
@@ -44,4 +44,4 @@ programs.tmux = {
 
 #### Configuration
 
-The configuration options are documented on [our GitHub](https://github.com/dracula/tmux/blob/master/docs/CONFIG.md)
+The configuration options are documented on [our GitHub](https://github.com/ponokai/tmux/blob/master/docs/CONFIG.md)

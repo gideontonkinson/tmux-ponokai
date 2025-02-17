@@ -2,8 +2,8 @@
 # setting the locale, some users have issues with different locales, this forces the correct one
 export LC_ALL=en_US.UTF-8
 
-DATAFILE="/tmp/.dracula-tmux-data"
-LAST_EXEC_FILE="/tmp/.dracula-tmux-weather-last-exec"
+DATAFILE="/tmp/.ponokai-tmux-data"
+LAST_EXEC_FILE="/tmp/.ponokai-tmux-weather-last-exec"
 INTERVAL=1200
 
 # Call weather script on interval to prevent exhausting remote API

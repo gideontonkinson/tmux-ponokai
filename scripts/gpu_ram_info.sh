@@ -10,7 +10,7 @@ get_platform()
   case $(uname -s) in
     Linux)
       # use this option for when your gpu isn't detected
-      gpu_label=$(get_tmux_option "@dracula-force-gpu" false)
+      gpu_label=$(get_tmux_option "@ponokai-force-gpu" false)
       if [[ "$gpu_label" != false ]]; then
         echo $gpu_label
       else
@@ -39,7 +39,7 @@ get_platform()
 get_gpu()
 {
   gpu=$(get_platform)
-  gpu_vram_percent=$(get_tmux_option "@dracula-gpu-vram-percent" false)
+  gpu_vram_percent=$(get_tmux_option "@ponokai-gpu-vram-percent" false)
   if [[ "$gpu" == NVIDIA ]]; then
     if $gpu_vram_percent; then
       usage=$(nvidia-smi --query-gpu=memory.used,memory.total --format=csv,noheader,nounits | awk '{ used += $0; total +=$2 } END { printf("%d%%\n", used / total * 100 ) }')
@@ -47,8 +47,8 @@ get_gpu()
     exit 0
     else
       # to add finer grained info
-      used_accuracy=$(get_tmux_option "@dracula-gpu-vram-used-accuracy" "d")
-      total_accuracy=$(get_tmux_option "@dracula-gpu-vram-total-accuracy" "d")
+      used_accuracy=$(get_tmux_option "@ponokai-gpu-vram-used-accuracy" "d")
+      total_accuracy=$(get_tmux_option "@ponokai-gpu-vram-total-accuracy" "d")
       usage=$(nvidia-smi --query-gpu=memory.used,memory.total --format=csv,noheader,nounits | awk "{ used += \$0; total +=\$2 } END { printf(\"%${used_accuracy}GB/%${total_accuracy}GB\n\", used / 1024, total / 1024) }")
     fi
   else
@@ -60,8 +60,8 @@ get_gpu()
 main()
 {
   # storing the refresh rate in the variable RATE, default is 5
-  RATE=$(get_tmux_option "@dracula-refresh-rate" 5)
-  gpu_label=$(get_tmux_option "@dracula-gpu-vram-label" "VRAM")
+  RATE=$(get_tmux_option "@ponokai-refresh-rate" 5)
+  gpu_label=$(get_tmux_option "@ponokai-gpu-vram-label" "VRAM")
   gpu_usage=$(get_gpu)
   echo "$gpu_label $gpu_usage"
   sleep $RATE

@@ -10,7 +10,7 @@ get_platform()
   case $(uname -s) in
     Linux)
       # use this option for when your gpu isn't detected
-      gpu_label=$(get_tmux_option "@dracula-force-gpu" false)
+      gpu_label=$(get_tmux_option "@ponokai-force-gpu" false)
       if [[ "$gpu_label" != false ]]; then
         echo $gpu_label
       else
@@ -55,8 +55,8 @@ get_gpu()
 main()
 {
   # storing the refresh rate in the variable RATE, default is 5
-  RATE=$(get_tmux_option "@dracula-refresh-rate" 5)
-  gpu_label=$(get_tmux_option "@dracula-gpu-usage-label" "GPU")
+  RATE=$(get_tmux_option "@ponokai-refresh-rate" 5)
+  gpu_label=$(get_tmux_option "@ponokai-gpu-usage-label" "GPU")
   gpu_usage=$(get_gpu)
   echo "$gpu_label $gpu_usage"
   sleep $RATE

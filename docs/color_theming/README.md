@@ -1,65 +1,80 @@
 # overriding widget colors
 widget color options with default values - sorted alphabetically:
 ```
-set -g @dracula-attached-clients-colors "cyan dark_gray"
-set -g @dracula-battery-colors "pink dark_gray"
-set -g @dracula-continuum-colors "cyan dark_gray"
-set -g @dracula-cpu-usage-colors "orange dark_gray"
-set -g @dracula-custom-plugin-colors "cyan dark_gray"
-set -g @dracula-cwd-colors "dark_gray white"
-set -g @dracula-fossil-colors "green dark_gray"
-set -g @dracula-git-colors "green dark_gray"
-set -g @dracula-gpu-power-draw-colors "green dark_gray"
-set -g @dracula-gpu-ram-usage-colors "cyan dark_gray"
-set -g @dracula-gpu-usage-colors "pink dark_gray"
-set -g @dracula-hg-colors "green dark_gray"
-set -g @dracula-kubernetes-context-colors "cyan dark_gray"
-set -g @dracula-libre-colors "white dark_gray"
-set -g @dracula-mpc-colors "green dark_gray"
-set -g @dracula-network-bandwidth-colors "cyan dark_gray"
-set -g @dracula-network-colors "cyan dark_gray"
-set -g @dracula-network-ping-colors "cyan dark_gray"
-set -g @dracula-network-vpn-colors "cyan dark_gray"
-set -g @dracula-playerctl-colors "green dark_gray"
-set -g @dracula-ram-usage-colors "cyan dark_gray"
-set -g @dracula-spotify-tui-colors "green dark_gray"
-set -g @dracula-ssh-session-colors "green dark_gray"
-set -g @dracula-synchronize-panes-colors "cyan dark_gray"
-set -g @dracula-terraform-colors "light_purple dark_gray"
-set -g @dracula-time-colors "dark_purple white"
-set -g @dracula-tmux-ram-usage-colors "cyan dark_gray"
-set -g @dracula-weather-colors "orange dark_gray"
+set -g @ponokai-attached-clients-colors "blue black"
+set -g @ponokai-battery-colors "red black"
+set -g @ponokai-client-colors "yellow bg1"
+set -g @ponokai-continuum-colors "blue black"
+set -g @ponokai-cpu-usage-colors "orange black"
+set -g @ponokai-custom-plugin-colors "blue black"
+set -g @ponokai-cwd-colors "grey black"
+set -g @ponokai-flag-colors "purple black"
+set -g @ponokai-fossil-colors "green black"
+set -g @ponokai-git-colors "green black"
+set -g @ponokai-gpu-power-draw-colors "green black"
+set -g @ponokai-gpu-ram-usage-colors "blue black"
+set -g @ponokai-gpu-usage-colors "red black"
+set -g @ponokai-hg-colors "green black"
+set -g @ponokai-kubernetes-context-colors "blue black"
+set -g @ponokai-libre-colors "fg0 bg2"
+set -g @ponokai-message-colors "fg0 bg2"
+set -g @ponokai-mpc-colors "green black"
+set -g @ponokai-network-bandwidth-colors "blue black"
+set -g @ponokai-network-colors "green black"
+set -g @ponokai-network-ping-colors "blue black"
+set -g @ponokai-network-vpn-colors "blue black"
+set -g @ponokai-pane-border-colors "purple, grey"
+set -g @ponokai-playerctl-colors "green black"
+set -g @ponokai-powerline-colors "purple bg1"
+set -g @ponokai-ram-usage-colors "blue black"
+set -g @ponokai-spotify-tui-colors "green black"
+set -g @ponokai-ssh-session-colors "green black"
+set -g @ponokai-status-colors "fg0 bg1"
+set -g @ponokai-synchronize-panes-colors "blue black"
+set -g @ponokai-terraform-colors "purple black"
+set -g @ponokai-time-colors "purple black"
+set -g @ponokai-tmux-ram-usage-colors "blue black"
+set -g @ponokai-weather-colors "blue black"
+set -g @ponokai-window-seperator-colors "purple black"
+set -g @ponokai-window-status-colors "purple bg1"
 ```
 
 # overriding color variables
 
-all dracula colors can be overridden and new variables can be added.
-use the `set -g @dracula-colors "color variables go here"` option. put each new variable on a new line for readability or all variables on one line to save space.
+all ponokai colors can be overridden and new variables can be added.
+use the `set -g @ponokai-colors "color variables go here"` option. put each new variable on a new line for readability or all variables on one line to save space.
 
 for a quick setup, add one of the following options to your config:
 **better readability**
 ```
-set -g @dracula-colors "
-# Dracula Color Pallette
-white='#f8f8f2'
-gray='#44475a'
-dark_gray='#282a36'
-light_purple='#bd93f9'
-dark_purple='#6272a4'
-cyan='#8be9fd'
-green='#50fa7b'
-orange='#ffb86c'
-red='#ff5555'
-pink='#ff79c6'
-yellow='#f1fa8c'
+set -g @ponokai-colors "
+# Ponokai Color Palette
+black='#000000'
+bg_dim='#252630'
+bg0='#000000'
+bg1='#1c1c1c'
+bg2='#303030'
+bg3='#444444'
+bg4='#585858'
+bg_red='#ffb3bd'
+diff_red='#a67f82'
+bg_green='#cbecb0'
+diff_green='#818f80'
+bg_blue='#b3e7f9'
+diff_blue='#808d9f'
+diff_yellow='#9c937a'
+fg0='#f2f2f3'
+red='#ff8c9a'
+orange='#f3bb9a'
+yellow='#f8e7b0'
+green='#b4e49a'
+blue='#98d4e7'
+purple='#bdb2ff'
+grey='#c4c6cf'
+grey_dim='#9da1af'
 "
 ```
 **saving space**
 ```
-set -g @dracula-colors " white='#f8f8f2' gray='#44475a' dark_gray='#282a36' light_purple='#bd93f9' dark_purple='#6272a4' cyan='#8be9fd' green='#50fa7b' orange='#ffb86c' red='#ff5555' pink='#ff79c6' yellow='#f1fa8c' "
+set -g @ponokai-colors " black='#000000' bg_dim='#252630' bg0='#000000' bg1='#1c1c1c' bg2='#303030' bg3='#444444' bg4='#585858' bg_red='#ffb3bd' diff_red='#a67f82' bg_green='#cbecb0' diff_green='#818f80' bg_blue='#b3e7f9' diff_blue='#808d9f' diff_yellow='#9c937a' fg='#f2f2f3' red='#ff8c9a' orange='#f3bb9a' yellow='#f8e7b0' green='#b4e49a' blue='#98d4e7' purple='#bdb2ff' grey='#c4c6cf' grey_dim='#9da1af' "
 ```
-## plug and play themes
-as part of this directory there are some plug and play themes with explanations on how to use them:
-- [catppuccin](/docs/color_theming/catppuccin.md)
-- [gruvbox](/docs/color_theming/gruvbox.md)
-- [tomorrow night](/docs/color_theming/tomorrow_night.md)
