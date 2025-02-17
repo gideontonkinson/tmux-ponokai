@@ -174,12 +174,12 @@ main() {
   # Status left
   if $show_powerline; then
     if $show_edge_icons; then
-      tmux set-option -g status-left "#[bg = ${powerline_colors[0]},fg = ${powerline_colors[1]},bold]#{?client_prefix,#[fg = ${client_colors[1]}],}${show_right_seperator}#[bg = ${powerline_colors[1]},fg = ${powerline_colors[0]}]#{?client_prefix,#[bg = ${client_colors[1]}],} ${left_icon} #[fg = ${powerline_colors[1]},bg = ${powerline_colors[0]}]#{?client_prefix,#[fg = ${client_colors[1]}],}${left_seperator} "
+      tmux set-option -g status-left "#[bg = ${!powerline_colors[0]},fg = ${!powerline_colors[1]},bold]#{?client_prefix,#[fg = ${!client_colors[1]}],}${show_right_seperator}#[bg = ${!powerline_colors[1]},fg = ${!powerline_colors[0]}]#{?client_prefix,#[bg = ${client_colors[1]}],} ${left_icon} #[fg = ${!powerline_colors[1]},bg = ${!powerline_colors[0]}]#{?client_prefix,#[fg = ${!client_colors[1]}],}${left_seperator} "
     else
-      tmux set-option -g status-left "#[bg = ${powerline_colors[0]},fg = ${powerline_colors[1]}]#[bg = ${powerline_colors[1]},fg = ${powerline_colors[0]}]#{?client_prefix,#[bg = ${client_colors[1]}],} ${left_icon} #[fg = ${powerline_colors[1]},bg = ${powerline_colors[0]}]#{?client_prefix,#[fg = ${client_colors[1]}],}${left_seperator}"
+      tmux set-option -g status-left "#[bg = ${!powerline_colors[0]},fg = ${!powerline_colors[1]}]#[bg = ${!powerline_colors[1]},fg = ${!powerline_colors[0]}]#{?client_prefix,#[bg = ${!client_colors[1]}],} ${left_icon} #[fg = ${!powerline_colors[1]},bg = ${!powerline_colors[0]}]#{?client_prefix,#[fg = ${!client_colors[1]}],}${left_seperator}"
     fi
   else
-    tmux set-option -g status-left "#[bg = ${powerline_colors[0]},fg = ${powerline_colors[1]}]#{?client_prefix,#[bg = ${client_colors[1]}],} ${left_icon}"
+    tmux set-option -g status-left "#[bg = ${!powerline_colors[0]},fg = ${!powerline_colors[1]}]#{?client_prefix,#[bg = ${!client_colors[1]}],} ${left_icon}"
   fi
 
   # Status right
@@ -339,12 +339,12 @@ main() {
 
     # edge styling
     if $show_edge_icons; then
-      right_edge_icon = "#[bg = ${powerline_colors[0]},fg = ${!colors[0]}]${show_left_seperator}"
+      right_edge_icon = "#[bg = ${!powerline_colors[0]},fg = ${!colors[0]}]${show_left_seperator}"
     fi
 
     if $show_powerline; then
       if $show_empty_plugins; then
-        tmux set-option -ga status-right " #[fg = ${!colors[0]},bg = ${powerline_colors[0]},nobold,nounderscore,noitalics]${right_seperator}#[fg = ${!colors[1]},bg = ${!colors[0]}] $script $right_edge_icon"
+        tmux set-option -ga status-right " #[fg = ${!colors[0]},bg = ${!powerline_colors[0]},nobold,nounderscore,noitalics]${right_seperator}#[fg = ${!colors[1]},bg = ${!colors[0]}] $script $right_edge_icon"
       else
         tmux set-option -ga status-right "#{?#{==:$script,},,#[fg = ${!colors[0]},nobold,nounderscore,noitalics] ${right_seperator}#[fg = ${!colors[1]},bg = ${!colors[0]}] $script $right_edge_icon}"
     fi
@@ -361,12 +361,12 @@ main() {
   # Window option
   IFS = ' ' read -r -a window_status_colors <<< $(get_tmux_option "@ponokai-window-status-colors" "bg1, purple")
   if $show_powerline; then
-    tmux set-window-option -g window-status-current-format "#[fg = ${window_seperator_colors[1]},bg = ${window_seperator_colors[0]}]${window_seperator}#[fg = ${window_status_colors[1]},bg = ${window_status_colors[0]}] #I #W${current_flags} #[fg = ${powerline_colors[1]},bg = ${powerline_colors[0]}]${left_seperator}"
+    tmux set-window-option -g window-status-current-format "#[fg = ${!window_seperator_colors[1]},bg = ${!window_seperator_colors[0]}]${!window_seperator}#[fg = ${!window_status_colors[1]},bg = ${!window_status_colors[0]}] #I #W${current_flags} #[fg = ${!powerline_colors[1]},bg = ${!powerline_colors[0]}]${left_seperator}"
   else
-    tmux set-window-option -g window-status-current-format "#[fg = ${window_status_colors[1]},bg = ${window_status_colors[0]}] #I #W${current_flags} "
+    tmux set-window-option -g window-status-current-format "#[fg = ${!window_status_colors[1]},bg = ${!window_status_colors[0]}] #I #W${current_flags} "
   fi
 
-  tmux set-window-option -g window-status-format "#[fg = ${powerline_colors[1]}]#[bg = ${powerline_colors[0]}] #I #W${flags}"
+  tmux set-window-option -g window-status-format "#[fg = ${!powerline_colors[1]}]#[bg = ${!powerline_colors[0]}] #I #W${flags}"
   tmux set-window-option -g window-status-activity-style "bold"
   tmux set-window-option -g window-status-bell-style "bold"
 }
