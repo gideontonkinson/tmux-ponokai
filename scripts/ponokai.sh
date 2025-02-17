@@ -70,8 +70,8 @@ main() {
     eval "$colors"
   fi
 
-  IFS=' ' read -r -a window_seperator_colors <<< $(get_tmux_option "@ponokai-window-seperator-colors" "black purple")
-  IFS=' ' read -r -a powerline_colors <<< $(get_tmux_option "@ponokai-powerline-colors" "bg1 purple")
+  IFS=' ' read -r -a window_seperator_colors <<< $(get_tmux_option "@ponokai-window-seperator-colors" "bg2 blue")
+  IFS=' ' read -r -a powerline_colors <<< $(get_tmux_option "@ponokai-powerline-colors" "bg1 blue")
 
   # Set transparency variables - Colors and window dividers
   if $transparent_powerline_bg; then
