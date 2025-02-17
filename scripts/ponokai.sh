@@ -345,7 +345,7 @@ main() {
       right_edge_icon="#[bg=${!powerline_colors[0]},fg=${!colors[0]}]${show_left_seperator}"
       plugin_background_color=${!powerline_colors[0]}
     fi
-      else plugin_background_color=${previous_plugin_background_color[0]}
+      else plugin_background_color=${previous_plugin_background_color}
 
     if $show_powerline; then
       if $show_empty_plugins; then
