@@ -16,7 +16,7 @@ main() {
     current_workspace=$(terraform workspace show 2>/dev/null)
     OUTPUT_STRING="${current_workspace}"
   fi
-  if [ "$label" = "" ]
+  if [ "$label"="" ]
   then
       echo "⚙️ ${OUTPUT_STRING}"
   else

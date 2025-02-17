@@ -22,7 +22,7 @@ programs.tmux = {
 		yank
 		{
 			plugin = ponokai;
-			extraConfig = ''
+			extraConfig=''
 				set -g @ponokai-show-battery false
 				set -g @ponokai-show-powerline true
 				set -g @ponokai-refresh-rate 10
@@ -30,7 +30,7 @@ programs.tmux = {
 		}
 	];
 
-	extraConfig = ''
+	extraConfig=''
 		set -g mouse on
 	'';
 };

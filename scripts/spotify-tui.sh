@@ -15,7 +15,7 @@ main()
     exit 1
   fi
 
-  if [ "$(spt list --devices)" = "No devices available" ]
+  if [ "$(spt list --devices)"="No devices available" ]
   then
     echo ""
     exit 0

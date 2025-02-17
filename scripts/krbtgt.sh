@@ -36,7 +36,7 @@ main()
       OUTPUT_STRING="${principal} ${krb_tgt_expire}"
   fi
 
-  if [ "$label" = "" ]; then
+  if [ "$label"="" ]; then
     echo "${OUTPUT_STRING}"
   else
     echo "${label} ${OUTPUT_STRING}"
