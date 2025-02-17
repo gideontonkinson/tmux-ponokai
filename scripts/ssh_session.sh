@@ -24,11 +24,11 @@ parse_ssh_config() {
     $1 == "Host" {
       gsub("\\\\.", "\\\\.", $2);
       gsub("\\\\*", ".*", $2);
-      host=$2;
+      host = $2;
       next;
     }
     $1 == "User" {
-      $1="";
+      $1 = "";
       sub( /^[[:space:]]*/, "" );
       printf "%s|%s\n", host, $0;
     }' $1`; do
@@ -106,7 +106,7 @@ ssh_connected() {
   # Get current pane command
   local cmd=$(tmux display-message -p "#{pane_current_command}")
 
-  [ $cmd="ssh" ] || [ $cmd="sshpass" ]
+  [ $cmd = "ssh" ] || [ $cmd = "sshpass" ]
 }
 
 main() {

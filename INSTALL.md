@@ -4,7 +4,7 @@
 
 If you are a tpm user, you can install the theme and keep up to date by adding the following to your .tmux.conf file:
 
-	set -g @plugin 'ponokai/tmux'
+	set -g @plugin 'gideontonkinson/tmux-ponokai'
 
 Add any configuration options below this line in your tmux config.
 
@@ -22,7 +22,7 @@ programs.tmux = {
 		yank
 		{
 			plugin = ponokai;
-			extraConfig=''
+			extraConfig = ''
 				set -g @ponokai-show-battery false
 				set -g @ponokai-show-powerline true
 				set -g @ponokai-refresh-rate 10
@@ -30,7 +30,7 @@ programs.tmux = {
 		}
 	];
 
-	extraConfig=''
+	extraConfig = ''
 		set -g mouse on
 	'';
 };
@@ -44,4 +44,4 @@ programs.tmux = {
 
 #### Configuration
 
-The configuration options are documented on [our GitHub](https://github.com/ponokai/tmux/blob/master/docs/CONFIG.md)
+The configuration options are documented on [our GitHub](https://github.com/gideontonkinson/tmux-ponokai/blob/master/docs/CONFIG.md)
