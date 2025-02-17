@@ -347,7 +347,7 @@ main() {
         tmux set-option -ga status-right " #[fg=${!colors[0]},bg=${!powerline_colors[0]},nobold,nounderscore,noitalics]${right_seperator}#[fg=${!colors[1]},bg=${!colors[0]}] $script $right_edge_icon"
       else
         tmux set-option -ga status-right "#{?#{==:$script,},,#[fg=${!colors[0]},nobold,nounderscore,noitalics] ${right_seperator}#[fg=${!colors[1]},bg=${!colors[0]}] $script $right_edge_icon}"
-    fi
+      fi
     else
       if $show_empty_plugins; then
         tmux set-option -ga status-right "#[fg=${!colors[1]},bg=${!colors[0]}] $script "
