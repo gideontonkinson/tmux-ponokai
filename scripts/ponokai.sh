@@ -40,29 +40,29 @@ main() {
   show_empty_plugins=$(get_tmux_option "@ponokai-show-empty-plugins" true)
 
   # Ponokai Color Palette
-  black='#000000'
-  bg_dim='#252630'
-  bg0='#000000'
-  bg1='#1c1c1c'
-  bg2='#303030'
-  bg3='#444444'
-  bg4='#585858'
-  bg_red='#ffb3bd'
-  diff_red='#a67f82'
-  bg_green='#cbecb0'
-  diff_green='#818f80'
-  bg_blue='#b3e7f9'
-  diff_blue='#808d9f'
-  diff_yellow='#9c937a'
-  fg0='#f2f2f3'
-  red='#ff8c9a'
-  orange='#f3bb9a'
-  yellow='#f8e7b0'
-  green='#b4e49a'
-  blue='#98d4e7'
-  purple='#bdb2ff'
-  grey='#c4c6cf'
-  grey_dim='#9da1af'
+  black="#000000"
+  bg_dim="#252630"
+  bg0="#000000"
+  bg1="#1c1c1c"
+  bg2="#303030"
+  bg3="#444444"
+  bg4="#585858"
+  bg_red="#ffb3bd"
+  diff_red="#a67f82"
+  bg_green="#cbecb0"
+  diff_green="#818f80"
+  bg_blue="#b3e7f9"
+  diff_blue="#808d9f"
+  diff_yellow="#9c937a"
+  fg0="#f2f2f3"
+  red="#ff8c9a"
+  orange="#f3bb9a"
+  yellow="#f8e7b0"
+  green="#b4e49a"
+  blue="#98d4e7"
+  purple="#bdb2ff"
+  grey="#c4c6cf"
+  grey_dim="#9da1af"
 
   # Override default colors and possibly add more
   colors="$(get_tmux_option "@ponokai-colors" "")"
@@ -186,6 +186,7 @@ main() {
   tmux set-option -g status-right ""
 
   for plugin in "${plugins[@]}"; do
+    echo $plugin
     if case $plugin in custom:*) true;; *) false;; esac; then
       script=${plugin#"custom:"}
       if [[ -x "${current_dir}/${script}" ]]; then
@@ -332,7 +333,7 @@ main() {
     elif [ $plugin = "sys-temp" ]; then
       IFS=' ' read -r -a colors <<< $(get_tmux_option "@ponokai-sys-temp-colors" "green black")
       script="#($current_dir/sys_temp.sh)"
-      
+
     else
       continue
     fi
