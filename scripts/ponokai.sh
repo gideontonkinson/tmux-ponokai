@@ -408,24 +408,20 @@ main() {
 
   first_window_index=$(tmux list-windows -F '#I' | sort -n | head -n1)
 
-  echo ${first_window_index}
-
   # Window option
   IFS=' ' read -r -a window_status_colors <<< $(get_tmux_option "@ponokai-window-status-colors" "purple bg1")
 
   if $show_powerline; then
-    tmux set-window-option -g window-status-current-format "#[bg=${!window_separator_colors[1],fg=${!window_separator_colors[0]}]#{?#{==:#I,${first_window_index}},#{?client_prefix,#[fg=${!client_colors[1]}],#[fg=${!powerline_colors[1]}]}${window_separator} #[fg=${!window_status_colors[1]},bg=${!window_status_colors[0]}] #I #W${current_flags} #[fg=${!window_separator_colors[0]},bg=${!window_separator_colors[1]}]${left_separator}"
+    tmux set-window-option -g window-status-current-format "#[bg=${!window_separator_colors[1]},fg=${!window_separator_colors[0]}]#{?#{==:#I,${first_window_index}},#{?client_prefix,#[fg=${!client_colors[1]}],#[fg=${!powerline_colors[1]}]},} ${window_separator} #[fg=${!window_status_colors[1]},bg=${!window_status_colors[0]}] #I #W${current_flags} #[fg=${!window_separator_colors[0]},bg=${!window_separator_colors[1]}]${left_separator}"
 
     # For inactive windows
-    tmux set-window-option -g window-status-format "#[bg=${!window_separator_colors[1],fg=${!window_separator_colors[1]}]#{?#{==:#I,${first_window_index}},#{?client_prefix,#[fg=${!client_colors[1]}],#[fg=${!powerline_colors[1]}]}${left_separator} #[fg=${!window_separator_colors[0]},bg=${!window_separator_colors[1]}]#I #W${flags} #[bg=${!window_separator_colors[1]},fg=${!window_separator_colors[1]}]${left_separator}"
+    tmux set-window-option -g window-status-format "#[bg=${!window_separator_colors[1]},fg=${!window_separator_colors[1]}]#{?#{==:#I,${first_window_index}},#{?client_prefix,#[fg=${!client_colors[1]}],#[fg=${!powerline_colors[1]}]},} ${left_separator} #[fg=${!window_separator_colors[0]},bg=${!window_separator_colors[1]}]#I #W${flags} #[bg=${!window_separator_colors[1]},fg=${!window_separator_colors[1]}]${left_separator}"
   else
     tmux set-window-option -g window-status-current-format "#[fg=${!window_status_colors[1]},bg=${!window_status_colors[0]}] #I #W${current_flags} "
     
     # For inactive windows
     tmux set-window-option -g window-status-format "#[fg=${!window_status_colors[0]},bg=${!window_status_colors[1]}] #I #W${flags} "
   fi
-
-
 
 
   tmux set-window-option -g window-status-activity-style "bold"
