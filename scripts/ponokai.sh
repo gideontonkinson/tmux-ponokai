@@ -410,15 +410,16 @@ main() {
 
   # Window option
   IFS=' ' read -r -a window_status_colors <<< $(get_tmux_option "@ponokai-window-status-colors" "purple bg1")
+
   if $show_powerline; then
     tmux set-window-option -g window-status-current-format \
-      "#[bg=${!window_separator_colors[0],fg=${!window_separator_colors[1]]#{?#{==:#I,${first_window_index}},#{?client_prefix,#[fg=${!client_colors[1]}],#[fg=${!powerline_colors[1]}]},}${window_separator}\
+      "#[bg=${!window_separator_colors[0],fg=${!window_separator_colors[1]}]#{?#{==:#I,$first_window_index},#{?client_prefix,#[fg=${!client_colors[1]}],#[fg=${!powerline_colors[1]}]},}${window_separator}\
       #[fg=${!window_status_colors[1]},bg=${!window_status_colors[0]}] #I #W${current_flags} \
       #[fg=${!window_separator_colors[0]},bg=${!window_separator_colors[1]}]${left_separator}"
 
     # For inactive windows
     tmux set-window-option -g window-status-format \
-      "#[bg=${!window_separator_colors[1],fg=${!window_separator_colors[1]]#{?#{==:#I,${first_window_index}},#{?client_prefix,#[fg=${!client_colors[1]}],#[fg=${!powerline_colors[1]}]},}${left_separator} \
+      "#[bg=${!window_separator_colors[1],fg=${!window_separator_colors[1]}]#{?#{==:#I,$first_window_index},#{?client_prefix,#[fg=${!client_colors[1]}],#[fg=${!powerline_colors[1]}]},}${left_separator} \
       #[fg=${!window_separator_colors[1]},bg=${!window_separator_colors[1]}]#I #W${flags} \
       #[bg=${!window_separator_colors[1]},fg=${!window_separator_colors[1]}]${left_separator}"
   else
