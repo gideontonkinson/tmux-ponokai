@@ -399,12 +399,12 @@ main() {
 
     if $show_powerline; then
       if $show_empty_plugins; then
-        tmux set-option -ga status-right "#[fg=${!powerline_colors[1]},bg=${plugin_background_color},nobold,nounderscore,noitalics]${right_separator}#[fg=${!powerline_colors[0]},bg=${!powerline_colors[1]}] ${right_icon} $right_edge_icon"
+        tmux set-option -ga status-right "#[fg=${!powerline_colors[1]},bg=${plugin_background_color},nobold,nounderscore,noitalics]${right_separator}#[fg=${!powerline_colors[1]},bg=${!powerline_colors[0]}] ${right_icon} $right_edge_icon"
       else
-        tmux set-option -ga status-right "#[fg=${!powerline_colors[1]},nobold,nounderscore,noitalics] ${right_separator}#[fg=${!powerline_colors[0]},bg=${!powerline_colors[1]}] ${right_icon} $right_edge_icon"
+        tmux set-option -ga status-right "#[fg=${!powerline_colors[1]},nobold,nounderscore,noitalics] ${right_separator}#[fg=${!powerline_colors[1]},bg=${!powerline_colors[0]}] ${right_icon} $right_edge_icon"
       fi
     else
-        tmux set-option -ga status-right "#[fg=${!powerline_colors[0]},bg=${!powerline_colors[1]}] ${right_icon}"
+        tmux set-option -ga status-right "#[fg=${!powerline_colors[1]},bg=${!powerline_colors[0]}] ${right_icon}"
     fi
   fi 
 
@@ -416,7 +416,7 @@ main() {
     tmux set-window-option -g window-status-current-format "#[fg=${!window_status_colors[1]},bg=${!window_status_colors[0]}] #I #W${current_flags} "
   fi
 
-  tmux set-window-option -g window-status-format "#[bg=${!window_separator_colors[0]},fg=${!window_separator_colors[1]}]${left_separator} #[fg=${!window_separator_colors[0]},bg=${!window_separator_colors[1]}]#I #W${flags} #[bg=${!window_separator_colors[1]},fg=${!window_separator_colors[1]}]${left_separator}"
+  tmux set-window-option -g window-status-format "#[bg=${!window_separator_colors[1]},fg=${!window_separator_colors[1]}]${left_separator} #[fg=${!window_separator_colors[0]},bg=${!window_separator_colors[1]}]#I #W${flags} #[bg=${!window_separator_colors[1]},fg=${!window_separator_colors[1]}]${left_separator}"
   tmux set-window-option -g window-status-activity-style "bold"
   tmux set-window-option -g window-status-bell-style "bold"
   tmux set-window-option -g window-status-separator ""
