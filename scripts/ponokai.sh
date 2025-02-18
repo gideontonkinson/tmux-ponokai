@@ -367,7 +367,7 @@ main() {
 
   done
 
-  if [["$show_right_icon" != "false"]]; then
+  if [[ "$show_right_icon" != "false" ]]; then
     case $show_right_icon in
       smiley)
         right_icon="☺";;
@@ -411,7 +411,7 @@ main() {
   # Window option
   IFS=' ' read -r -a window_status_colors <<< $(get_tmux_option "@ponokai-window-status-colors" "purple bg1")
   if $show_powerline; then
-    tmux set-window-option -g window-status-current-format "#[fg=${!window_separator_colors[1]},bg=${!window_separator_colors[0]}]${window_separator}#[fg=${!window_status_colors[1]},bg=${!window_status_colors[0]}] #I #W${current_flags} #[fg=${!window_separator_colors[1]},bg=${!window_separator_colors[0]}]${left_separator}"
+    tmux set-window-option -g window-status-current-format "#[fg=${!window_separator_colors[1]},bg=${!window_separator_colors[0]}]${window_separator}#[fg=${!window_status_colors[1]},bg=${!window_status_colors[0]}] #I #W${current_flags} #[fg=${!window_separator_colors[0]},bg=${!window_separator_colors[1]}]${left_separator}"
   else
     tmux set-window-option -g window-status-current-format "#[fg=${!window_status_colors[1]},bg=${!window_status_colors[0]}] #I #W${current_flags} "
   fi
