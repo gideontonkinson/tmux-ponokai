@@ -406,7 +406,7 @@ main() {
     fi
   fi 
 
-  first_window_index=$(tmux list-windows -F '#I' | sort -n | head -n1)
+  first_window_index=$(get_tmux_option "base-index" 0)
 
   # Window option
   IFS=' ' read -r -a window_status_colors <<< $(get_tmux_option "@ponokai-window-status-colors" "purple bg1")
