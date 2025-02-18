@@ -35,7 +35,6 @@ set -g @ponokai-terraform-colors "purple black"
 set -g @ponokai-time-colors "purple black"
 set -g @ponokai-tmux-ram-usage-colors "blue black"
 set -g @ponokai-weather-colors "blue black"
-set -g @ponokai-window-separator-colors "purple black"
 set -g @ponokai-window-status-colors "purple bg1"
 ```
 

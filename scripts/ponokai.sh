@@ -21,8 +21,10 @@ main() {
   show_powerline=$(get_tmux_option "@ponokai-show-powerline" true)
   transparent_powerline_bg=$(get_tmux_option "@ponokai-transparent-powerline-bg" false)
   show_flags=$(get_tmux_option "@ponokai-show-flags" true)
-  show_left_icon=$(get_tmux_option "@ponokai-show-left-icon" "#h | #S")
+  show_left_icon=$(get_tmux_option "@ponokai-show-left-icon" session)
   show_left_icon_padding=$(get_tmux_option "@ponokai-left-icon-padding" 0)
+  show_right_icon=$(get_tmux_option "@ponokai-show-left-icon" shortname)
+  show_right_icon_padding=$(get_tmux_option "@ponokai-left-icon-padding" 0)
   show_military=$(get_tmux_option "@ponokai-military-time" false)
   timezone=$(get_tmux_option "@ponokai-set-timezone" "")
   show_timezone=$(get_tmux_option "@ponokai-show-timezone" true)
@@ -70,7 +72,7 @@ main() {
     eval "$colors"
   fi
 
-  IFS=' ' read -r -a window_separator_colors <<< $(get_tmux_option "@ponokai-window-separator-colors" "bg2 blue")
+  IFS=' ' read -r -a window_separator_colors <<< $(get_tmux_option "@ponokai-window-status-colors" "bg1 purple")
   IFS=' ' read -r -a powerline_colors <<< $(get_tmux_option "@ponokai-powerline-colors" "bg1 blue")
 
   # Set transparency variables - Colors and window dividers
@@ -174,7 +176,7 @@ main() {
   # Status left
   if $show_powerline; then
     if $show_edge_icons; then
-      tmux set-option -g status-left "#[bg=${!powerline_colors[0]},fg=${!powerline_colors[1]},bold]#{?client_prefix,#[fg=${!client_colors[1]}],}${show_right_separator}#[bg=${!powerline_colors[1]},fg=${!powerline_colors[0]}]#{?client_prefix,#[bg=${client_colors[1]}],} ${left_icon} #[fg=${!powerline_colors[1]},bg=${!powerline_colors[0]}]#{?client_prefix,#[fg=${!client_colors[1]}],}${left_separator} "
+      tmux set-option -g status-left "#[bg=${!powerline_colors[0]},fg=${!powerline_colors[1]},bold]#{?client_prefix,#[fg=${!client_colors[1]}],}${right_separator}#[bg=${!powerline_colors[1]},fg=${!powerline_colors[0]}]#{?client_prefix,#[bg=${client_colors[1]}],} ${left_icon} #[fg=${!powerline_colors[1]},bg=${!powerline_colors[0]}]#{?client_prefix,#[fg=${!client_colors[1]}],}${left_separator} "
     else
       tmux set-option -g status-left "#[bg=${!powerline_colors[0]},fg=${!powerline_colors[1]}]#[bg=${!powerline_colors[1]},fg=${!powerline_colors[0]}]#{?client_prefix,#[bg=${!client_colors[1]}],} ${left_icon} #[fg=${!powerline_colors[1]},bg=${!powerline_colors[0]}]#{?client_prefix,#[fg=${!client_colors[1]}],}${left_separator}"
     fi
@@ -364,12 +366,46 @@ main() {
     fi
 
   done
+  if $show_right_icon then
+    case $show_right_icon in
+      smiley)
+        right_icon="☺";;
+      session)
+        right_icon="#S";;
+      window)
+        right_icon="#W";;
+      hostname)
+        right_icon="#H";;
+      shortname)
+        right_icon="#h";;
+      *)
+        right_icon=$show_right_icon;;
+    esac
 
-   if $show_powerline; then
-    tmux set-option -ga status-right "#[fg=${!powerline_colors[0]},bg=${!client_colors[1]}]${right_separator}#[bg=${!powerline_colors[0]},fg=${!powerline_colors[1]},bold] #h #[bg=${!powerline_colors[1]},fg=${!powerline_colors[0]}]"
-  else
-    tmux set-option -ga status-right "#[fg=${!powerline_colors[0]},bg=${client_colors[0]}]${right_separator}#[bg=${!powerline_colors[0]},fg=${!powerline_colors[1]},bold] #h "
-  fi
+    # Handle left icon padding
+    padding=""
+    if [ "$show_right_icon_padding" -gt "0" ]; then
+      padding="$(printf '%*s' $show_right_icon_padding)"
+    fi
+    right_icon="$padding$right_icon"
+
+    if $show_edge_icons; then
+      right_edge_icon="#[bg=${!powerline_colors[0]},fg=${!powerline_colors[1]}]${show_left_separator}"
+      plugin_background_color=${!powerline_colors[0]}
+    else 
+      plugin_background_color=${previous_plugin_background_color}
+    fi
+
+    if $show_powerline; then
+      if $show_empty_plugins; then
+        tmux set-option -ga status-right "#[fg=${!powerline_colors[1]},bg=${plugin_background_color},nobold,nounderscore,noitalics]${right_separator}#[fg=${!powerline_colors[0]},bg=${!powerline_colors[1]}] ${right_icon} $right_edge_icon"
+      else
+        tmux set-option -ga status-right "#[fg=${!powerline_colors[1]},nobold,nounderscore,noitalics] ${right_separator}#[fg=${!powerline_colors[0]},bg=${!powerline_colors[1]}] ${right_icon} $right_edge_icon"
+      fi
+    else
+        tmux set-option -ga status-right "#[fg=${!powerline_colors[0]},bg=${!powerline_colors[1]}] ${right_icon}"
+    fi
+  fi 
 
   # Window option
   IFS=' ' read -r -a window_status_colors <<< $(get_tmux_option "@ponokai-window-status-colors" "purple bg1")
