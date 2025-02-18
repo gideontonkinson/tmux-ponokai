@@ -395,11 +395,9 @@ main() {
       plugin_background_color=${previous_plugin_background_color}
     fi
 
-    echo ${previous_plugin_background_color}
-
     if $show_powerline; then
       if $show_empty_plugins; then
-        tmux set-option -ga status-right "#[fg=${!powerline_colors[1]},bg=${plugin_background_color},nobold,nounderscore,noitalics]${right_separator}#[fg=${!powerline_colors[1]},bg=${!powerline_colors[0]}]#{?client_prefix,#[fg=${!client_colors[1]}],} ${right_icon} $right_edge_icon"
+        tmux set-option -ga status-right "#[fg=${!powerline_colors[0]},bg=${plugin_background_color},nobold,nounderscore,noitalics]${right_separator}#[fg=${!powerline_colors[1]},bg=${!powerline_colors[0]}]#{?client_prefix,#[fg=${!client_colors[1]}],} ${right_icon} $right_edge_icon"
       else
         tmux set-option -ga status-right "#[fg=${!powerline_colors[1]},nobold,nounderscore,noitalics]${right_separator}#[fg=${!powerline_colors[1]},bg=${!powerline_colors[0]}]#{?client_prefix,#[fg=${!client_colors[1]}],} ${right_icon} $right_edge_icon"
       fi
