@@ -366,7 +366,8 @@ main() {
     fi
 
   done
-  if $show_right_icon then
+
+  if $show_right_icon; then
     case $show_right_icon in
       smiley)
         right_icon="☺";;
