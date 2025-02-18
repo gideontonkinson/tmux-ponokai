@@ -24,10 +24,10 @@ main() {
   fi
 
   # change '/home/user' to '~'
-  cwd="${path/"${HOME}/"/'~/'}"
+  cwd="${path/$HOME/~}"
 
   # check max number of subdirs to display. 0 means unlimited
-  cwd_max_dirs="$(get_tmux_option "@ponokai-cwd-max-dirs" "0")"
+  cwd_max_dirs="$(get_tmux_option "@ponokai-cwd-max-dirs" "3")"
 
   if [[ "$cwd_max_dirs" -gt 0 ]]; then
     base_to_erase=$cwd
@@ -40,7 +40,7 @@ main() {
     fi
   fi
 
-  cwd_max_chars="$(get_tmux_option "@ponokai-cwd-max-chars" "0")"
+  cwd_max_chars="$(get_tmux_option "@ponokai-cwd-max-chars" "30")"
   if [[ "${cwd_max_chars}" -gt 0 && "${#cwd}" -gt "$cwd_max_chars" ]]; then
     cwd="…/…${cwd:(- cwd_max_chars)}"
   fi
